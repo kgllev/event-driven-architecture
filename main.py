@@ -17,3 +17,20 @@ redis = get_redis_connection(
     password='OprdsfdVpyMVY5Hoj8VEyO4lPntNuqKF',
     decode_responses=True
 )
+
+
+class Delivery(HashModel):
+    budget: int = 0
+    notes: str = ''
+
+    class Meta:
+        database = redis
+
+
+class Event(HashModel):
+    delivery_id: str = None
+    type: str
+    data: str
+
+    class Meta:
+        database = redis
